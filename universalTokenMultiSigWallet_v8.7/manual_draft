@@ -1,0 +1,16 @@
+Steps
+1) SubmitNew transaction in ETH using  submitTransaction or Token by submitTokenTransaction , you get ID of transaction
+[ in token transaction you need also provide address of ERC interface compatible token ]
+2) two owners = 2 users must confirm this ID transaction using confirm 
+[ if there is a dispute a third owner have power to confirm also transaction as arbiter , or it is also common situation when managing board of company/ngo has 3 people and 2 of them must sign any financial decision ]
+3. now Transaction with at least 2 confirmations can be executed you need to trigger executeTransaction (TransactionID) to make it happen
+as if there is no funds in wallet it might be triggered later when the funds will be transferred to wallet.
+Blockchain state at this point just show that such financial decision was made.
+4. if transaction is executed and there is enough funds in wallet you either get ETH transfer or wallet call some token contract and using ERC 20 interface call transfer tokens to destination address.
+
+Note :
+submitTransaction which is ETH transaction needs( destination - any ETH adres, and value in ETH but in wei )
+
+submitTokenTransaction which operates on ERC20 tokens needs ( token smartcontract address , destination - any ETH adres, and value in Token but in wei scale (18 * 0 ) )
+
+PS. smart contract could have multiplication of *1ETH but it is left this way for automatic testing more clear.
